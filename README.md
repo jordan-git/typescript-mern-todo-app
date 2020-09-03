@@ -1,4 +1,4 @@
-## MERN Stack To Do Application (WIP) in Typescript
+## MERN Stack To Do Application in Typescript (WIP)
 
 ## Setup:
 
