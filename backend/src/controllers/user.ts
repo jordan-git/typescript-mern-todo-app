@@ -38,7 +38,7 @@ class UserController {
 
                 const payload = { username };
                 const token = jwt.sign(payload, process.env.SECRET, {
-                    expiresIn: '300s',
+                    expiresIn: '600s',
                 });
 
                 res.cookie('token', token, {

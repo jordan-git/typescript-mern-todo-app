@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
 
 import { router as userRouter } from './routes/user';
+import { router as todoRouter } from './routes/todo';
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ class App {
 
     private mountRoutes(): void {
         this.express.use('/api', userRouter);
+        this.express.use('/api', todoRouter);
 
         // 404 route
         this.express.use(
