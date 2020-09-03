@@ -13,34 +13,19 @@ const UserSchema: Schema = new Schema({
     password: { type: String, required: true },
 });
 
-UserSchema.pre('save', function (next: Function) {
-    if (this.isNew || this.isModified('password')) {
-        const document = this;
-        bcrypt.hash(
-            document.password,
-            saltRounds,
-            (err: Error, hashedPassword: string) => {
-                if (err) next(err);
-                else {
-                    document.password = hashedPassword;
-                    next();
-                }
-            }
-        );
+UserSchema.pre('save', async function (next: Function) {
+    const document = this;
+    if (document.isNew || document.isModified('password')) {
+        const hashedPassword = await bcrypt.hash(document.password, saltRounds);
+        document.password = hashedPassword;
+        next();
     }
 });
 
-UserSchema.methods.isCorrectPassword = function (
-    password: string,
-    callback: Function
-) {
-    bcrypt.compare(password, this.password, function (
-        err: Error,
-        isSame: boolean
-    ) {
-        if (err) callback(err);
-        else callback(err, isSame);
-    });
+UserSchema.methods.isCorrectPassword = async function (password: string) {
+    const match = await bcrypt.compare(password, this.password);
+    if (match) return true;
+    else return false;
 };
 
 export default model<User>('User', UserSchema);

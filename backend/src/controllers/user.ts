@@ -12,51 +12,64 @@ class UserController {
         if (req.method == 'POST') this.handleRegisterPost(req, res);
     }
 
-    private handleLoginPost(req: Request, res: Response) {
-        const { username, password } = req.body;
-        User.findOne({ username }, (err: Error, user) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('Internal server error');
-            } else if (!user) {
-                res.status(401).send('Incorrect email/password combination');
-            } else {
-                user.isCorrectPassword(
-                    password,
-                    (err: Error, isSame: boolean) => {
-                        if (err) {
-                            console.error(err);
-                            res.status(500).send('Internal server error');
-                        } else if (!isSame) {
-                            res.status(401).send(
-                                'Incorrect email/password combination'
-                            );
-                        } else {
-                            const payload = { username };
-                            const token = jwt.sign(
-                                payload,
-                                process.env.SECRET,
-                                { expiresIn: '1h' }
-                            );
-                            res.cookie('token', token, {
-                                httpOnly: true,
-                            }).sendStatus(200);
-                        }
-                    }
-                );
-            }
-        });
+    public handleLogout(req: Request, res: Response) {
+        this.handleLogoutGet(req, res);
     }
 
-    private handleRegisterPost(req: Request, res: Response) {
+    private async handleLoginPost(req: Request, res: Response) {
+        const { username, password } = req.body;
+        try {
+            const user = await User.findOne({ username }).exec();
+            if (!user) {
+                res.status(401).send('Incorrect email/password combination');
+                return;
+            }
+
+            try {
+                const isCorrectPassword = await user.isCorrectPassword(
+                    password
+                );
+                if (!isCorrectPassword) {
+                    res.status(401).send(
+                        'Incorrect email/password combination'
+                    );
+                    return;
+                }
+
+                const payload = { username };
+                const token = jwt.sign(payload, process.env.SECRET, {
+                    expiresIn: '300s',
+                });
+
+                res.cookie('token', token, {
+                    httpOnly: true,
+                }).send('Logged in successfully');
+                return;
+            } catch (error) {
+                console.error(error);
+                res.status(500).send('Internal server error');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal server error');
+        }
+    }
+
+    private async handleRegisterPost(req: Request, res: Response) {
         const { username, password } = req.body;
         const user = new User({ username, password });
-        user.save((err: Error) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('Error registering new user');
-            } else res.redirect('/');
-        });
+
+        try {
+            await user.save();
+            res.send('User created successfully');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error registering new user');
+        }
+    }
+
+    private handleLogoutGet(req: Request, res: Response) {
+        res.clearCookie('token').send('Logged out successfully');
     }
 }
 
