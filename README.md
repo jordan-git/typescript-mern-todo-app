@@ -2,6 +2,10 @@
 
 ## Setup:
 
+#### Frontend:
+
+#### Backend:
+
 1. Create a file named `.env` in the root directory following the format:
 
 ```
