@@ -1,0 +1,24 @@
+{
+    "name": "express-typescript-todo",
+    "version": "1.0.0",
+    "scripts": {
+        "run-backend-test": "ts-node backend/src/index",
+        "build-backend": "tsc -p ./backend",
+        "run-backend": "node ./backend/dist/index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jordan-git/typescript-mern-todo-app.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jordan-git/typescript-mern-todo-app/issues"
+    },
+    "homepage": "https://github.com/jordan-git/typescript-mern-todo-app#readme",
+    "devDependencies": {
+        "ts-node": "^9.0.0",
+        "tsc": "^1.20150623.0",
+        "typescript": "^4.0.2"
+    }
+}

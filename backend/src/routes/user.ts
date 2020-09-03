@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import * as jwt from 'express-jwt';
 
 import UserController from '../controllers/user';
 import { isLoggedIn, isLoggedOut } from '../middleware/auth';
