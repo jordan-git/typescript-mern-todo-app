@@ -69,6 +69,20 @@ class TodoController {
                 return;
             }
 
+            let owner: string;
+            try {
+                const token = req.cookies.token;
+                const decoded = await jwt.verify(token, process.env.SECRET);
+                owner = decoded.username;
+            } catch (error) {
+                res.status(401).send('Invalid JWT token');
+                return;
+            }
+
+            if (todo.owner != owner) {
+                res.status(403).send('Todo was not created by you');
+            }
+
             res.json(todo);
         } catch (error) {
             res.status(500).send('Internal server error');
@@ -77,15 +91,28 @@ class TodoController {
 
     private async handleTodoUpdate(req: Request, res: Response) {
         try {
-            const todo = await Todo.findOneAndUpdate(
-                { _id: req.params.id },
-                req.body
-            ).exec();
+            const todo = await Todo.findOne({ _id: req.params.id }).exec();
 
             if (!todo) {
                 res.status(404).send('Todo not found');
                 return;
             }
+
+            let owner: string;
+            try {
+                const token = req.cookies.token;
+                const decoded = await jwt.verify(token, process.env.SECRET);
+                owner = decoded.username;
+            } catch (error) {
+                res.status(401).send('Invalid JWT token');
+                return;
+            }
+
+            if (todo.owner != owner) {
+                res.status(403).send('Todo was not created by you');
+            }
+
+            await Todo.updateOne({ _id: req.params.id }, req.body);
 
             res.send('Todo successfully updated');
         } catch (error) {
@@ -95,14 +122,29 @@ class TodoController {
 
     private async handleTodoDelete(req: Request, res: Response) {
         try {
-            const todo = await Todo.findOneAndDelete({
-                _id: req.params.id,
-            }).exec();
+            const todo = await Todo.findOne({ _id: req.params.id }).exec();
 
             if (!todo) {
                 res.status(404).send('Todo not found');
                 return;
             }
+
+            let owner: string;
+            try {
+                const token = req.cookies.token;
+                const decoded = await jwt.verify(token, process.env.SECRET);
+                owner = decoded.username;
+            } catch (error) {
+                res.status(401).send('Invalid JWT token');
+                return;
+            }
+
+            if (todo.owner != owner) {
+                res.status(403).send('Todo was not created by you');
+                return;
+            }
+
+            await Todo.deleteOne({ _id: req.params.id });
 
             res.send('Todo successfully deleted');
         } catch (error) {
