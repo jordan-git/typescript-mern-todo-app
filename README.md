@@ -13,7 +13,7 @@ MONGO_URI=<uri>
 SECRET=<secret>
 ```
 
-2. Use `npm run run-backend-test` to host the backend without compiling the TypeScript to JavaScript files (using ts-node).
+2. Use `npm run run-backend-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev).
 3. Optionally use `npm run build-backend` followed by `npm run run-backend` to build and execute the JavaScript files directly.
 
 ## Progress:
@@ -22,5 +22,5 @@ SECRET=<secret>
 
 #### Backend:
 
--   MongoDB database (supports user login/register)
+-   MongoDB database (supports user login/register, RESTful todos)
 -   JWT login authentication
