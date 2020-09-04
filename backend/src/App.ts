@@ -32,7 +32,6 @@ class App {
 
     private connectToDatabase(): void {
         mongoose.set('useCreateIndex', true);
-        mongoose.set('useFindAndModify', false);
         mongoose.connect(
             process.env.MONGO_URI,
             {

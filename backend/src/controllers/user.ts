@@ -36,8 +36,7 @@ class UserController {
                     return;
                 }
 
-                const payload = { username };
-                const token = jwt.sign(payload, process.env.SECRET, {
+                const token = jwt.sign({ username }, process.env.SECRET, {
                     expiresIn: '3600s',
                 });
 
@@ -61,7 +60,13 @@ class UserController {
 
         try {
             await user.save();
-            res.send('User created successfully');
+            const token = jwt.sign({ username }, process.env.SECRET, {
+                expiresIn: '3600s',
+            });
+
+            res.cookie('token', token, {
+                httpOnly: true,
+            }).send('User created and logged in successfully');
         } catch (error) {
             res.status(500).send('Error registering new user');
         }
