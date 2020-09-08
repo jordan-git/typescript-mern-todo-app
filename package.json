@@ -2,12 +2,16 @@
     "name": "express-typescript-todo",
     "version": "1.0.0",
     "scripts": {
+        "install-root": "npm install",
+        "install-frontend": "cd frontend && npm install",
+        "install-backend": "cd backend && npm install",
+        "install-all": "concurrently 'npm:install-root' 'npm:install-frontend' 'npm:install-backend'",
         "run-backend-dev": "ts-node-dev backend/src/index",
         "build-backend": "tsc -p ./backend",
         "run-backend": "node ./backend/dist/index",
         "run-frontend-dev": "cd frontend && npm run start",
         "build-frontend": "cd frontend && npm run build",
-        "run-all-dev": "concurrently 'npm:run-backend-dev' 'npm:run-frontend-dev'"
+        "run-all-dev": "concurrently 'npm:run-frontend-dev' 'npm:run-backend-dev'"
     },
     "repository": {
         "type": "git",

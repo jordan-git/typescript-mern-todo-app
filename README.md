@@ -2,8 +2,9 @@
 
 ## Setup:
 
-1. Open the terminal in the root folder and run the command `npm install` to download all dependencies
-2. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
+1. Open the terminal in the root folder and use the command `npm run install-all` to download all dependencies.
+2. Optionally run the commands `npm run install-root`, `npm run install-frontend` and `npm run install-backend` to install dependencies successively.
+3. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
 
 #### Frontend:
 
