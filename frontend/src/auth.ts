@@ -49,8 +49,6 @@ class authClient {
             data: data,
         });
 
-        console.log(response);
-
         const token = response.data.token;
         if (!token) return false;
 
@@ -60,6 +58,7 @@ class authClient {
 
     logout(): void {
         localStorage.removeItem('token');
+        document.cookie = '';
         delete this.axios.defaults.headers.common.authorization;
     }
 }

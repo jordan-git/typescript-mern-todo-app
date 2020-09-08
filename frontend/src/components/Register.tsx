@@ -6,7 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import authClient from '../auth';
 
 interface Props {
-    onLoginSuccess: () => void;
+    onRegisterSuccess: () => void;
 }
 
 interface FormInputs {
@@ -14,21 +14,21 @@ interface FormInputs {
     password: string;
 }
 
-const LogIn: React.FunctionComponent<Props> = (props: Props) => {
+const Register: React.FunctionComponent<Props> = (props: Props) => {
     const { register, handleSubmit, errors } = useForm<FormInputs>();
     const history = useHistory();
 
     const onSubmit = async (data: any) => {
-        const loggedInSuccessfully = await authClient.login(data);
+        const loggedInSuccessfully = await authClient.register(data);
 
         if (loggedInSuccessfully) {
-            props.onLoginSuccess();
+            props.onRegisterSuccess();
             history.push('/');
         }
     };
 
     return (
-        <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <form id="register-form" onSubmit={handleSubmit(onSubmit)}>
             <input
                 type="text"
                 name="username"
@@ -79,9 +79,9 @@ const LogIn: React.FunctionComponent<Props> = (props: Props) => {
                 )}
             />
 
-            <button type="submit">Log In</button>
+            <button type="submit">Register</button>
         </form>
     );
 };
 
-export default LogIn;
+export default Register;

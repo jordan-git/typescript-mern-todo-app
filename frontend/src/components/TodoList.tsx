@@ -1,12 +1,18 @@
 import React from 'react';
 
+type Todo = {
+    owner: object;
+    description: string;
+    completed: boolean;
+};
+
 interface State {
-    todos: object;
+    todos: Array<Todo>;
 }
 
 class TodoList extends React.Component<any, State> {
     state: State = {
-        todos: {},
+        todos: [],
     };
 
     render() {

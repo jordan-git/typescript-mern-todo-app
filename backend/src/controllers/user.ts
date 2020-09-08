@@ -11,10 +11,9 @@ class UserController {
             const user = await User.findOne({ username }).exec();
 
             if (!user) {
-                res.status(401).json({
+                return res.status(401).json({
                     error: 'Incorrect email/password combination',
                 });
-                return;
             }
 
             try {
@@ -23,19 +22,24 @@ class UserController {
                 );
 
                 if (!isCorrectPassword) {
-                    res.status(401).json({
+                    return res.status(401).json({
                         error: 'Incorrect email/password combination',
                     });
-                    return;
                 }
 
-                const token = jwt.sign({ username }, process.env.SECRET, {
-                    expiresIn: '3600s',
-                });
+                const token = jwt.sign(
+                    { id: user._id, username },
+                    process.env.SECRET,
+                    {
+                        expiresIn: '3600s',
+                    }
+                );
 
-                res.cookie('token', token, {
-                    httpOnly: true,
-                }).json({ token });
+                return res
+                    .cookie('token', token, {
+                        httpOnly: true,
+                    })
+                    .json({ token });
             } catch (error) {
                 res.status(500).json({ error });
             }
@@ -49,11 +53,26 @@ class UserController {
         const user = new User({ username, password });
 
         try {
+            const userExists = await User.findOne({ username }).exec();
+            if (userExists) {
+                return res
+                    .status(409)
+                    .json({ error: 'Username already exists' });
+            }
+        } catch (error) {
+            res.status(500).json({ error });
+        }
+
+        try {
             await user.save();
 
-            const token = jwt.sign({ username }, process.env.SECRET, {
-                expiresIn: '3600s',
-            });
+            const token = jwt.sign(
+                { id: user._id, username },
+                process.env.SECRET,
+                {
+                    expiresIn: '3600s',
+                }
+            );
 
             res.cookie('token', token, {
                 httpOnly: true,

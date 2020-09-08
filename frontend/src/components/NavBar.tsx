@@ -22,9 +22,14 @@ const NavBar: React.FunctionComponent<Props> = (props: Props) => {
                         </li>
                     </>
                 ) : (
-                    <li>
-                        <Link to="/log-in">Log In</Link>
-                    </li>
+                    <>
+                        <li>
+                            <Link to="/register">Register</Link>
+                        </li>
+                        <li>
+                            <Link to="/log-in">Log In</Link>
+                        </li>
+                    </>
                 )}
             </ul>
         </nav>

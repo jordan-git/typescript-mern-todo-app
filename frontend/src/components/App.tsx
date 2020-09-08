@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import authClient from '../auth';
 import LogIn from './LogIn';
 import LogOut from './LogOut';
+import Register from './Register';
 import NavBar from './NavBar';
 import TodoList from './TodoList';
 import PrivateRoute from './PrivateRoute';
@@ -18,6 +19,10 @@ class App extends React.Component<{}, State> {
     };
 
     onLoginSuccess() {
+        this.setState({ currentUser: authClient.getCurrentUser() });
+    }
+
+    onRegisterSuccess() {
         this.setState({ currentUser: authClient.getCurrentUser() });
     }
 
@@ -54,6 +59,21 @@ class App extends React.Component<{}, State> {
                                 <LogOut
                                     {...props}
                                     onLogOut={this.onLogout.bind(this)}
+                                />
+                            );
+                        }}
+                    />
+
+                    <Route
+                        exact
+                        path="/register"
+                        render={(props) => {
+                            return (
+                                <Register
+                                    {...props}
+                                    onRegisterSuccess={this.onRegisterSuccess.bind(
+                                        this
+                                    )}
                                 />
                             );
                         }}

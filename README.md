@@ -27,9 +27,9 @@ SECRET=<secret>
 
 -   `react-router` routing
 -   Uses `axios` to send HTTP requests to the backend
--   User authentication and persistence (Using `localStorage` + `cookie`)
+-   User registration/authentication and persistence (Using `localStorage` + `cookie`)
 
 #### Backend:
 
 -   `MongoDB` database (`Mongoose`, supports user login/register, RESTful todos)
--   `JSON Web Token` login authentication
+-   `JSON Web Token` authentication
