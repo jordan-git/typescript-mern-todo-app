@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
+import * as cors from 'cors';
 
 import { router as userRouter } from './routes/user';
 import { router as todoRouter } from './routes/todo';
@@ -28,6 +29,7 @@ class App {
         this.express.use(compression());
         this.express.use(cookieParser());
         this.express.use(bodyParser.json());
+        this.express.use(cors());
     }
 
     private connectToDatabase(): void {

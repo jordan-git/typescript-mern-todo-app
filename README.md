@@ -2,7 +2,12 @@
 
 ## Setup:
 
+1. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
+
 #### Frontend:
+
+1. Use `npm run run-frontend-dev` to host the frontend in development mode.
+2. Use `npm run build-frontend` to build the frontend.
 
 #### Backend:
 
@@ -20,7 +25,11 @@ SECRET=<secret>
 
 #### Frontend:
 
+-   `react-router` routing
+-   Uses `axios` to send HTTP requests to the backend
+-   User authentication and persistence (Using `localStorage` + `cookie`)
+
 #### Backend:
 
--   MongoDB database (supports user login/register, RESTful todos)
--   JWT login authentication
+-   `MongoDB` database (`Mongoose`, supports user login/register, RESTful todos)
+-   `JSON Web Token` login authentication
