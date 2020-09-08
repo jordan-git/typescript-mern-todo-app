@@ -22,10 +22,6 @@ class App extends React.Component<{}, State> {
         this.setState({ currentUser: authClient.getCurrentUser() });
     }
 
-    onRegisterSuccess() {
-        this.setState({ currentUser: authClient.getCurrentUser() });
-    }
-
     onLogout() {
         authClient.logout();
         this.setState({ currentUser: null });
@@ -71,7 +67,7 @@ class App extends React.Component<{}, State> {
                             return (
                                 <Register
                                     {...props}
-                                    onRegisterSuccess={this.onRegisterSuccess.bind(
+                                    onRegisterSuccess={this.onLoginSuccess.bind(
                                         this
                                     )}
                                 />
