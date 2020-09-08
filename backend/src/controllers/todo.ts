@@ -143,7 +143,6 @@ class TodoController {
                 return;
             }
             if (todo.owner != owner) {
-                console.log({ owner }, todo.owner);
                 res.status(403).json({ error: 'Todo was not created by you' });
                 return;
             }
