@@ -2,7 +2,8 @@
 
 ## Setup:
 
-1. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
+1. Open the terminal in the root folder and run the command `npm install` to download all dependencies
+2. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
 
 #### Frontend:
 
@@ -19,7 +20,7 @@ SECRET=<secret>
 ```
 
 2. Use `npm run run-backend-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev).
-3. Optionally use `npm run build-backend` followed by `npm run run-backend` to build and execute the JavaScript files directly.
+3. Optionally use `npm run build-backend` followed by `npm run run-backend` to build and execute the production JavaScript files directly.
 
 ## Progress:
 

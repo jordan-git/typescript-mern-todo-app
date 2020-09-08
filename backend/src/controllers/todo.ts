@@ -147,6 +147,7 @@ class TodoController {
                 return;
             }
             await Todo.deleteOne({ _id: req.params.id });
+
             res.status(204).end();
         } catch (error) {
             console.error(error);
