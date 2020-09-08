@@ -115,10 +115,12 @@ class TodoController {
                 res.status(403).json({ error: 'Todo was not created by you' });
             }
 
-            const updatedTodo = await Todo.updateOne(
-                { _id: req.params.id },
-                req.body
-            );
+            await Todo.updateOne({ _id: req.params.id }, req.body);
+
+            const updatedTodo = await Todo.findOne({
+                _id: req.params.id,
+            }).exec();
+
             res.json(updatedTodo);
         } catch (error) {
             res.status(500).json({ error: 'Internal server error' });
@@ -135,17 +137,18 @@ class TodoController {
             try {
                 const token = req.cookies.token;
                 const decoded = jwt.verify(token, process.env.SECRET);
-                owner = (decoded as Token).username;
+                owner = (decoded as Token).id;
             } catch (error) {
                 res.status(401).json({ error: 'Invalid JWT token' });
                 return;
             }
             if (todo.owner != owner) {
+                console.log({ owner }, todo.owner);
                 res.status(403).json({ error: 'Todo was not created by you' });
                 return;
             }
             await Todo.deleteOne({ _id: req.params.id });
-            res.status(204);
+            res.status(204).end();
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal server error' });
