@@ -75,13 +75,13 @@ const App: React.FunctionComponent<{}> = () => {
                 <Route
                     exact
                     path="/list"
-                    render={() => {
-                        if (validateToken()) {
-                            return <ToDoList owner={userInfo.id} />;
-                        } else {
-                            return <Redirect to="/login" />;
-                        }
-                    }}
+                    render={() =>
+                        validateToken() ? (
+                            <ToDoList owner={userInfo.id} />
+                        ) : (
+                            <Redirect to="/login" />
+                        )
+                    }
                 ></Route>
                 <Route exact path="/register">
                     <Register validateToken={validateToken} />
