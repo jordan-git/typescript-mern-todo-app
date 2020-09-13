@@ -4,14 +4,14 @@ A to do application created in Typescript using the MERN Stack. The backend and 
 
 ## Setup:
 
-1. Open the terminal in the root folder and use the command `npm run install-all` to download all dependencies.
-2. Optionally run the commands `npm run install-root`, `npm run install-client` and `npm run install-server` to install dependencies successively.
-3. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
+1. Open the terminal in the root folder and use the command `npm run install-all` to download all dependencies
+2. Optionally run the commands `npm run install-root`, `npm run install-client` and `npm run install-server` to install dependencies successively
+3. Use `npm run run-all-dev` to host both the backend and the frontend in development mode
 
 #### Frontend:
 
-1. Use `npm run run-client-dev` to host the frontend in development mode.
-2. Use `npm run build-client` to build the frontend.
+1. Use `npm run run-client-dev` to host the frontend in development mode
+2. Use `npm run build-client` to build the frontend
 
 #### Backend:
 
@@ -22,8 +22,8 @@ MONGO_URI=<uri>
 SECRET=<secret>
 ```
 
-2. Use `npm run run-server-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev).
-3. Optionally use `npm run build-server` followed by `npm run run-server` to build and execute the production JavaScript files directly.
+2. Use `npm run run-server-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev)
+3. Optionally use `npm run build-server` followed by `npm run run-server` to build and execute the production JavaScript files directly
 
 ## Progress:
 
@@ -32,9 +32,9 @@ SECRET=<secret>
 -   `react-router` routing
 -   Private routes accessible by authenticated users only
 -   Uses `axios` to send HTTP requests to the backend
--   User registration, authentication and persistence (Using `localStorage` + `cookie`)
+-   User registration, authentication and persistence (using `localStorage`)
 -   Error messages received from the server are displayed on the screen when submitting forms (not going to implement client side validation in this project)
--   To do system roughly 90% complete (add/save works, debugging update)
+-   To do system roughly 90% complete (add/save works, debugging update on tick)
 
 #### Backend:
 
