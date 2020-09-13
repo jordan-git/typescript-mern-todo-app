@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+#todo-list {
+    width: 500px;
+    margin: 0 auto;
+
+    #input-container {
+        input {
+            width: 96%;
+            margin: 2% 2%;
+        }
+        #buttons {
+            display: flex;
+
+            button {
+                width: 50%;
+                margin: 0 2%;
+            }
+        }
+    }
+}

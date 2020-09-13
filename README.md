@@ -5,13 +5,13 @@ A to do application created in Typescript using the MERN Stack. The backend and 
 ## Setup:
 
 1. Open the terminal in the root folder and use the command `npm run install-all` to download all dependencies.
-2. Optionally run the commands `npm run install-root`, `npm run install-frontend` and `npm run install-backend` to install dependencies successively.
+2. Optionally run the commands `npm run install-root`, `npm run install-client` and `npm run install-server` to install dependencies successively.
 3. Use `npm run run-all-dev` to host both the backend and the frontend in development mode.
 
 #### Frontend:
 
-1. Use `npm run run-frontend-dev` to host the frontend in development mode.
-2. Use `npm run build-frontend` to build the frontend.
+1. Use `npm run run-client-dev` to host the frontend in development mode.
+2. Use `npm run build-client` to build the frontend.
 
 #### Backend:
 
@@ -22,8 +22,8 @@ MONGO_URI=<uri>
 SECRET=<secret>
 ```
 
-2. Use `npm run run-backend-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev).
-3. Optionally use `npm run build-backend` followed by `npm run run-backend` to build and execute the production JavaScript files directly.
+2. Use `npm run run-server-dev` to host the backend without compiling the TypeScript to JavaScript files (using ts-node-dev).
+3. Optionally use `npm run build-server` followed by `npm run run-server` to build and execute the production JavaScript files directly.
 
 ## Progress:
 
@@ -33,8 +33,10 @@ SECRET=<secret>
 -   Private routes accessible by authenticated users only
 -   Uses `axios` to send HTTP requests to the backend
 -   User registration, authentication and persistence (Using `localStorage` + `cookie`)
+-   To do system roughly 90% complete (add/save works, debugging update)
 
 #### Backend:
 
 -   `MongoDB` database (`Mongoose`, supports user login/register, RESTful todos)
 -   `JSON Web Token` authentication
+-   RESTful To Do API

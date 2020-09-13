@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+}
+
+.user-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-field {
+    padding: 0.8em;
+}

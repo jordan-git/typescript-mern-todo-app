@@ -6,12 +6,12 @@
         "install-frontend": "cd frontend && npm install",
         "install-backend": "cd backend && npm install",
         "install-all": "concurrently 'npm:install-root' 'npm:install-frontend' 'npm:install-backend'",
-        "run-backend-dev": "ts-node-dev backend/src/index",
-        "build-backend": "tsc -p ./backend",
-        "run-backend": "node ./backend/dist/index",
-        "run-frontend-dev": "cd frontend && npm run start",
-        "build-frontend": "cd frontend && npm run build",
-        "run-all-dev": "concurrently 'npm:run-frontend-dev' 'npm:run-backend-dev'"
+        "run-server-dev": "ts-node-dev server/src/index",
+        "build-server": "tsc -p ./server",
+        "run-server": "node ./server/dist/index",
+        "run-client-dev": "cd client && npm run start",
+        "build-client": "cd client && npm run build",
+        "run-all-dev": "concurrently 'npm:run-server-dev' 'npm:run-client-dev'"
     },
     "repository": {
         "type": "git",

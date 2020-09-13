@@ -1,0 +1,16 @@
+.todo {
+    display: flex;
+    padding: 0.8em;
+
+    span {
+        flex: 1;
+        font-size: 1.4em;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+
+    input {
+        transform: scale(1.5);
+        align-self: center;
+    }
+}
