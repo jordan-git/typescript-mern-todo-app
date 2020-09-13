@@ -54,7 +54,6 @@ const App: React.FunctionComponent<{}> = () => {
                     id: data.id,
                     username: data.username,
                 });
-                console.log('here');
                 return true;
             })
             .catch((error) => {
@@ -77,9 +76,7 @@ const App: React.FunctionComponent<{}> = () => {
                     exact
                     path="/list"
                     render={() => {
-                        console.log(validateToken());
                         if (validateToken()) {
-                            console.log('here2');
                             return <ToDoList owner={userInfo.id} />;
                         } else {
                             return <Redirect to="/login" />;

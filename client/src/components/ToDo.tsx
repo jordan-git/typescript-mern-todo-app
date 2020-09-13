@@ -27,9 +27,7 @@ const ToDo: React.FunctionComponent<Props> = (props: Props) => {
                     },
                     { headers: { Authorization: 'Bearer ' + token } }
                 )
-                .then((response) => {
-                    console.log(response);
-                })
+                .then((response) => {})
                 .catch((error) => {});
         }
     };
