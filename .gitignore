@@ -124,7 +124,8 @@ dist
 /coverage
 
 # production
-frontend/build
+client/build
+server/dist
 
 # misc
 .DS_Store
