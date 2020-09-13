@@ -1,6 +1,6 @@
 ## MERN Stack To Do Application in TypeScript (WIP)
 
-A to do application created in Typescript using the MERN Stack. The backend and frontend are split into two separate npm projects, each with separate dependencies, all container in one main project. Both the frontend and backend are coded in TypeScript. The backend uses `Express` and `MongoDB` (`Mongoose`). The frontend uses `React`.
+A to do application created in Typescript using the MERN Stack. The backend and frontend are split into two separate npm projects, each with separate dependencies, all contained in one main project. Both the frontend and backend are coded in TypeScript. The backend uses `Express` and `MongoDB` (`Mongoose`). The frontend uses `React`.
 
 ## Setup:
 
