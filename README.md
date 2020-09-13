@@ -33,6 +33,7 @@ SECRET=<secret>
 -   Private routes accessible by authenticated users only
 -   Uses `axios` to send HTTP requests to the backend
 -   User registration, authentication and persistence (Using `localStorage` + `cookie`)
+-   Error messages received from the server are displayed on the screen when submitting forms (not going to implement client side validation in this project)
 -   To do system roughly 90% complete (add/save works, debugging update)
 
 #### Backend:
