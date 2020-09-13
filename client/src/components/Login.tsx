@@ -9,7 +9,7 @@ interface ErrorMessage {
 }
 
 interface Props {
-    validateToken: () => void;
+    validateToken: () => boolean | Promise<boolean>;
 }
 
 const Login: React.FunctionComponent<Props> = (props: Props) => {

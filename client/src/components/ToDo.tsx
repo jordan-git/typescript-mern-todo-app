@@ -11,7 +11,9 @@ interface Props {
 }
 
 const ToDo: React.FunctionComponent<Props> = (props: Props) => {
-    const [completed, setCompleted] = useState<boolean>(props.completed);
+    const [completed, setCompleted] = useState<boolean>(
+        props.completed ? true : false
+    );
 
     const handleChecked = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCompleted(event.target.checked);
@@ -23,7 +25,7 @@ const ToDo: React.FunctionComponent<Props> = (props: Props) => {
                 .put(
                     `/api/todos/${props._id}`,
                     {
-                        completed: completed,
+                        completed,
                     },
                     { headers: { Authorization: 'Bearer ' + token } }
                 )

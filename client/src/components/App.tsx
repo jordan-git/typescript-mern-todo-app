@@ -57,6 +57,7 @@ const App: React.FunctionComponent<{}> = () => {
                 return true;
             })
             .catch((error) => {
+                localStorage.removeItem('token');
                 return false;
             });
     };

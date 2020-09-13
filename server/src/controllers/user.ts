@@ -72,9 +72,7 @@ class UserController {
                 }
             );
 
-            res.cookie('token', token, {
-                httpOnly: true,
-            }).json({ token });
+            res.json({ token });
         } catch (error) {
             res.status(500).json({ error });
         }

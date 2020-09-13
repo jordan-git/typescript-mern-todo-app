@@ -9,7 +9,7 @@ interface ErrorMessage {
 }
 
 interface Props {
-    validateToken: () => void;
+    validateToken: () => boolean | Promise<boolean>;
 }
 
 const Register: React.FunctionComponent<Props> = (props: Props) => {
@@ -19,7 +19,7 @@ const Register: React.FunctionComponent<Props> = (props: Props) => {
 
     const [errorMessage, setErrorMessage] = useState<ErrorMessage>({
         show: false,
-        message: 'Something went wrong',
+        message: '',
     });
 
     const handleFormSubmit = (event: React.FormEvent) => {
