@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "scripts": {
         "install-root": "npm install",
-        "install-frontend": "cd frontend && npm install",
-        "install-backend": "cd backend && npm install",
-        "install-all": "concurrently 'npm:install-root' 'npm:install-frontend' 'npm:install-backend'",
+        "install-client": "cd client && npm install",
+        "install-server": "cd server && npm install",
+        "install-all": "concurrently 'npm:install-root' 'npm:install-client' 'npm:install-server'",
         "run-server-dev": "ts-node-dev server/src/index",
         "build-server": "tsc -p ./server",
         "run-server": "node ./server/dist/index",
